@@ -8,6 +8,7 @@ const clearBtn = document.querySelector("#clearBtn");
 const natification = document.querySelector(".messages");
 const removeBtn = document.querySelector(".fa-solid fa-xmark");
 const rowTwo = document.querySelector(".row-two");
+const todoSearch = document.querySelector("#todoSearch");
 
 let todos = []; //todolarımı buraya atıyorum
 runEvents();
@@ -17,7 +18,9 @@ function runEvents() {
   document.addEventListener("DOMContentLoaded", pageLoaded);
   rowTwo.addEventListener("click", removeTodoToUI);
   clearBtn.addEventListener("click", allTodosEverywhere);
+  todoSearch.addEventListener("keyup", filter);
 }
+
 //tüm todoları temizle butonu
 function allTodosEverywhere() {
   const todoListesi = document.querySelectorAll(".list-item");
@@ -48,6 +51,29 @@ function pageLoaded() {
     addTodoToUI(todo);
   });
 }
+// arama inputu
+function filter(e) {
+  const filterValue = e.target.value.toLowerCase().trim();
+  const todoListesi = document.querySelectorAll(".list-item");
+
+  if (todoListesi.length > 0) {
+    todoListesi.forEach(function (todo) {
+      if (todo.textContent.toLowerCase().trim().includes(filterValue)) {
+        todo.setAttribute("style", "display : block");
+      } else {
+        todo.setAttribute("style", "display : none !important");
+      }
+    });
+  } else {
+    natification.textContent =
+      "Filtreleme yapmak için en az 1 todo olması gerekmetedir.";
+    natification.style.backgroundColor = "yellow";
+    setTimeout(function () {
+      natification.textContent = "";
+    }, 2500);
+  }
+}
+
 function addTodo(e) {
   //burada bildirimi veriyorum ve çalışma şeklimi ekliyorum
   const inputText = addInput.value.trim();
