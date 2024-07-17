@@ -6,21 +6,24 @@ body {
   padding: 0;
 }
 .container {
-  width: 350px;
+  width: 400px;
   margin: auto;
+  border: 2px solid rgba(128, 128, 128, 0.562);
+  border-radius: 5px;
+  margin-top: 2rem;
+  background-color: rgba(137, 43, 226, 0);
 }
 .row {
   display: flex;
   flex-direction: column;
   padding: 1rem;
 }
-
 .btn {
   margin: 1rem;
   background-color: brown;
   color: white;
   padding: 0.8rem;
-  border-radius: 10px;
+  border-radius: 5px;
   border: none;
   cursor: pointer;
   transition: all 0.1s;
@@ -33,4 +36,10 @@ body {
 }
 .btn:active {
   transform: scale(95%);
+}
+input{
+    padding: 1rem ;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(212, 208, 208, 0.397);
 }
