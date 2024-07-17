@@ -18,6 +18,7 @@ function runEvents() {
   rowTwo.addEventListener("click", removeTodoToUI);
   clearBtn.addEventListener("click", allTodosEverywhere);
 }
+//tüm todoları temizle butonu
 function allTodosEverywhere() {
   const todoListesi = document.querySelectorAll(".list-item");
   if (todoListesi.length > 0) {
@@ -26,6 +27,11 @@ function allTodosEverywhere() {
     });
     todos = [];
     localStorage.setItem("todos", JSON.stringify(todos));
+    natification.textContent = "Tamamı silindi.";
+    natification.style.backgroundColor = "green";
+    setTimeout(function () {
+      natification.textContent = "";
+    }, 2500);
   } else {
     natification.textContent = "Silmek için en az 1 To-Do olmalıdır.";
     natification.style.backgroundColor = "red";
