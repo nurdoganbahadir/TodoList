@@ -66,8 +66,8 @@ function filter(e) {
     });
   } else {
     natification.textContent =
-      "Filtreleme yapmak için en az 1 todo olması gerekmetedir.";
-    natification.style.backgroundColor = "yellow";
+      "Filtreleme yapmak için en az 1 todo olması gerekmektedir.";
+    natification.style.backgroundColor = "red";
     setTimeout(function () {
       natification.textContent = "";
     }, 2500);
