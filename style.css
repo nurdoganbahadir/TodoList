@@ -62,10 +62,14 @@ input {
 }
 ul > li {
   list-style-type: none;
-  margin: 0.5rem;
   padding: 1rem;
   border-radius: 5px;
   border: none;
   background-color: rgba(212, 208, 208, 0.397);
-  margin-left: -32px;
+  margin-left: -40px;
+  margin-top: 5px;
+}
+li>i{
+  float: right;
+  cursor: pointer;
 }

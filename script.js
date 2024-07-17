@@ -28,9 +28,15 @@ function addTodo(e) {
 
 function addTodoToUI(newTodo) {
   const li = document.createElement("li");
+  const i = document.createElement("i");
+
   li.className = "lilst-item";
   li.textContent = newTodo;
+  i.className = "fa-solid fa-xmark";
+
   todoList.appendChild(li);
+  li.appendChild(i);
 
   addInput.value = "";
 }
+// <i class="fa-solid fa-xmark"></i>;
