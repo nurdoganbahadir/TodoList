@@ -68,7 +68,7 @@ ul > li {
   margin-left: -40px;
   margin-top: 5px;
 }
-li>i{
+li > i {
   float: right;
   cursor: pointer;
 }

@@ -7,6 +7,7 @@ const todoList = document.querySelector(".todoList");
 const clearBtn = document.querySelector("#clearBtn");
 const natification = document.querySelector(".messages");
 const removeBtn = document.querySelector(".fa-solid fa-xmark");
+const rowTwo = document.querySelector(".row-two");
 
 let todos = []; //todolarımı buraya atıyorum
 runEvents();
@@ -14,6 +15,7 @@ runEvents();
 function runEvents() {
   form.addEventListener("submit", addTodo);
   document.addEventListener("DOMContentLoaded", pageLoaded);
+  rowTwo.addEventListener("click", removeTodoToUI);
 }
 // sayfayı yenilediğimde şunu yap
 function pageLoaded() {
@@ -27,6 +29,7 @@ function addTodo(e) {
   const inputText = addInput.value.trim();
   if (inputText === "" || inputText === null) {
     natification.textContent = "Lütfen bir değer giriniz";
+    natification.style.backgroundColor = "green";
     setTimeout(function () {
       natification.textContent = "";
     }, 2000);
@@ -35,6 +38,7 @@ function addTodo(e) {
     addTodoToUI(inputText);
     addTodoToStorage(inputText);
     natification.textContent = "Başarıyla eklendi.";
+    natification.style.backgroundColor = "green";
     setTimeout(function () {
       natification.textContent = "";
     }, 2000);
@@ -68,5 +72,18 @@ function addTodoToUI(newTodo) {
   todoList.appendChild(li);
   li.appendChild(i);
 
-  addInput.value = "";
+  addInput.value = ""; //todomu girince inputu sıfırlıyorum
+}
+
+// todo silme
+function removeTodoToUI(e) {
+  if (e.target.className === "fa-solid fa-xmark") {
+    const todo = e.target.parentElement;
+    todo.remove();
+    natification.textContent = "Başarıyla silindi";
+    natification.style.backgroundColor = "red";
+    setTimeout(function () {
+      natification.textContent = "";
+    }, 2000);
+  }
 }
