@@ -20,7 +20,7 @@ function addTodo(e) {
   } else {
     //arayüz ekleme
     addTodoToUI(inputText);
-    natification.textContent = "Başarıyla eklendi."
+    natification.textContent = "Başarıyla eklendi.";
   }
   //storage ekleme
   e.preventDefault();

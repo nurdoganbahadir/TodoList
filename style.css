@@ -60,3 +60,12 @@ input {
   border-radius: 5px;
   transition: all 0.5s;
 }
+ul > li {
+  list-style-type: none;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(212, 208, 208, 0.397);
+  margin-left: -32px;
+}
