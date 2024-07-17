@@ -6,7 +6,9 @@ const addBtn = document.querySelector("#addBtn");
 const todoList = document.querySelector(".todoList");
 const clearBtn = document.querySelector("#clearBtn");
 const natification = document.querySelector(".messages");
+const removeBtn = document.querySelector(".fa-solid fa-xmark");
 
+let todos = [];
 runEvents();
 
 function runEvents() {
@@ -17,13 +19,34 @@ function addTodo(e) {
   const inputText = addInput.value.trim();
   if (inputText === "" || inputText === null) {
     natification.textContent = "Lütfen bir değer giriniz";
+    setTimeout(function () {
+      natification.textContent = "";
+    }, 2000);
   } else {
     //arayüz ekleme
     addTodoToUI(inputText);
+    addTodoToStorage(inputText);
     natification.textContent = "Başarıyla eklendi.";
+    setTimeout(function () {
+      natification.textContent = "";
+    }, 2000);
   }
   //storage ekleme
   e.preventDefault();
+}
+
+function addTodoToStorage(newTodo) {
+  checkTodosFromStorage();
+  todos.push(newTodo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function checkTodosFromStorage() {
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
 }
 
 function addTodoToUI(newTodo) {
@@ -39,4 +62,3 @@ function addTodoToUI(newTodo) {
 
   addInput.value = "";
 }
-// <i class="fa-solid fa-xmark"></i>;

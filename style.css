@@ -58,7 +58,6 @@ input {
   background-color: rgb(4, 243, 83);
   color: white;
   border-radius: 5px;
-  transition: all 0.5s;
 }
 ul > li {
   list-style-type: none;
