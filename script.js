@@ -16,7 +16,25 @@ function runEvents() {
   form.addEventListener("submit", addTodo);
   document.addEventListener("DOMContentLoaded", pageLoaded);
   rowTwo.addEventListener("click", removeTodoToUI);
+  clearBtn.addEventListener("click", allTodosEverywhere);
 }
+function allTodosEverywhere() {
+  const todoListesi = document.querySelectorAll(".list-item");
+  if (todoListesi.length > 0) {
+    todoListesi.forEach(function (todo) {
+      todo.remove();
+    });
+    todos = [];
+    localStorage.setItem("todos", JSON.stringify(todos));
+  } else {
+    natification.textContent = "Silmek için en az 1 To-Do olmalıdır.";
+    natification.style.backgroundColor = "red";
+    setTimeout(function () {
+      natification.textContent = "";
+    }, 2500);
+  }
+}
+
 // sayfayı yenilediğimde şunu yap
 function pageLoaded() {
   checkTodosFromStorage();
@@ -65,7 +83,7 @@ function addTodoToUI(newTodo) {
   const li = document.createElement("li");
   const i = document.createElement("i");
 
-  li.className = "lilst-item";
+  li.className = "list-item";
   li.textContent = newTodo;
   i.className = "fa-solid fa-xmark";
 
