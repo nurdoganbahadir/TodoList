@@ -1,12 +1,36 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-body{
-    margin: 0;
-    padding: 0;
+body {
+  margin: 0;
+  padding: 0;
 }
-.container{
-    width: 350px;
-    height: 1000px;
-    margin: auto;
+.container {
+  width: 350px;
+  margin: auto;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.btn {
+  margin: 1rem;
+  background-color: brown;
+  color: white;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.1s;
+  font-weight: bold;
+}
+.add {
+  width: 120px;
+  margin: 0;
+  margin-top: 1rem;
+}
+.btn:active {
+  transform: scale(95%);
 }
