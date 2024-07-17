@@ -8,14 +8,22 @@ const clearBtn = document.querySelector("#clearBtn");
 const natification = document.querySelector(".messages");
 const removeBtn = document.querySelector(".fa-solid fa-xmark");
 
-let todos = [];
+let todos = []; //todolarımı buraya atıyorum
 runEvents();
 
 function runEvents() {
   form.addEventListener("submit", addTodo);
+  document.addEventListener("DOMContentLoaded", pageLoaded);
 }
-
+// sayfayı yenilediğimde şunu yap
+function pageLoaded() {
+  checkTodosFromStorage();
+  todos.forEach(function (todo) {
+    addTodoToUI(todo);
+  });
+}
 function addTodo(e) {
+  //burada bildirimi veriyorum ve çalışma şeklimi ekliyorum
   const inputText = addInput.value.trim();
   if (inputText === "" || inputText === null) {
     natification.textContent = "Lütfen bir değer giriniz";
@@ -48,7 +56,7 @@ function checkTodosFromStorage() {
     todos = JSON.parse(localStorage.getItem("todos"));
   }
 }
-
+// burada todolarımın görüntülecenk olan yeri ekliyorum
 function addTodoToUI(newTodo) {
   const li = document.createElement("li");
   const i = document.createElement("i");
