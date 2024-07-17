@@ -85,5 +85,16 @@ function removeTodoToUI(e) {
     setTimeout(function () {
       natification.textContent = "";
     }, 2000);
+    //storageden silmek
+    removeTodoToStorage(todo.textContent);
   }
+}
+function removeTodoToStorage(removeTodo) {
+  checkTodosFromStorage();
+  todos.forEach(function (todo, index) {
+    if (removeTodo === todo) {
+      todos.splice(index, 1);
+    }
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
